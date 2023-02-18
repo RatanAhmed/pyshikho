@@ -1,1 +1,1 @@
-print("Hello \n      Wolrd")
+input("Enter Input")

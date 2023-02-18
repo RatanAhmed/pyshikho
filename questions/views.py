@@ -12,19 +12,15 @@ def index(request):
     result = now.strftime("%Y-%m-%d %H:%M:%S")
     template = loader.get_template('index.html')
     context = {
-        'result': result,
-         
+        'result': '',
     }
     return HttpResponse(template.render(context, request))
 
 def create(request):
     write_file(request.POST.get('text',''))
-    
     output = result()
-    
 
     template = loader.get_template('index.html')
-    # output = output.replace('\n', "<br/>")
     context = {
         'result': output,
         'text': request.POST.get('text','')
@@ -38,12 +34,9 @@ def write_file(data):
 
 def result():
     result = subprocess.run(['python', 'scripts/user_input.py'], capture_output=True)
-    
+
     if result.returncode == 0:
         output = result.stdout.decode("utf-8")
     else:
         output = result.stderr.decode("utf-8")
-        #output = subprocess.getoutput()
-
-    output = output.split('\n')
-    return output
+    return output.split('\n')
