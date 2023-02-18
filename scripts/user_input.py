@@ -1,1 +1,1 @@
-input("Enter Input")
+print('Welcome Shad')

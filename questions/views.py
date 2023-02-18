@@ -23,7 +23,8 @@ def create(request):
     template = loader.get_template('index.html')
     context = {
         'result': output,
-        'text': request.POST.get('text','')
+        'text': request.POST.get('text',''),
+        'user_input': request.POST.get('user_input',''),
     }
     return HttpResponse(template.render(context, request))
 
