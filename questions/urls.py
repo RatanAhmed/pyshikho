@@ -1,8 +1,8 @@
+from django.conf.urls import url
 from django.urls import path
-
-from . import views
+from questions import views
 
 urlpatterns = [
     path('', views.index, name='questions'),
-    path('questions/create', views.create, name='questions.create'),
+    path('create/', views.create, name='questions.create'),
 ]

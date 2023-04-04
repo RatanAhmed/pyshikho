@@ -5,6 +5,11 @@ import subprocess
 import os
 
 # Create your views here.
+
+def home(request):
+    diction = {}
+    return render(request, 'questions/base.html', context=diction)
+    
 def index(request):
     # Store input numbers
     import datetime
