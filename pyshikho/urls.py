@@ -6,5 +6,7 @@ from questions import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
-    path('questions/', include('questions.urls')),
+    path('about/',views.about),
+    path('questions/',views.questions),
+    # path('questions/', include('questions.urls')),
 ]

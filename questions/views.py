@@ -1,15 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from questions.models import Questions 
 import subprocess
 import os
 
 # Create your views here.
 
 def home(request):
-    diction = {}
+    questions = Questions.objects.all()
+    diction = { 'question_list' : questions}
     return render(request, 'questions/base.html', context=diction)
-    
+
+def about(request):
+    questions = Questions.objects.all()
+    diction = { 'question_list' : questions}
+    return render(request, 'questions/about.html', context=diction)
+
+def questions(request):
+    questions = Questions.objects.all()
+    diction = { 'question_list' : questions}
+    return render(request, 'questions/questions.html', context=diction)
+   
 def index(request):
     # Store input numbers
     import datetime

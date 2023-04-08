@@ -65,29 +65,37 @@
     </header>
     <section class="hero_section ">
       <div class="hero-container container">
-        <div class="hero_detail-box">
-          <h1>
-            Best place to 
-            Learn Python 
-          </h1>
-          <p>
-            Pyshikho is a python learning platform where you find many problems to learn. So lets Learn Python on Pyshikho...
-          </p>
-          <div class="hero_btn-continer">
-            <a href="" class="call_to-btn btn_white-border">
-              Read More
-            </a>
-          </div>
-        </div>
         <div class="hero_img-container">
-          <div>
-            <img src="{% static 'images/hero.png'%}" alt="" class="img-fluid">
+          
+          <div class="container">
+            <div class="row" style="max-height: 100vh;">
+              <div class="col-4">
+                <div id="list-example" class="list-group">
+                  {% if question_list %}
+                  {% for question in question_list %}
+                  <a class="list-group-item list-group-item-action" href="#list-item-{{ question.id }}">{{ question.title }}</a>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-8">
+                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                  {% if question_list %}
+                  {% for question in question_list %}
+                  <h4 id="list-item-{{ question.id }}">{{ question.title }}</h4>
+                  <p>{{ question.description | safe }}</p>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </div>
   <!-- end header section -->
+  
 
   <div class="common_style">
 

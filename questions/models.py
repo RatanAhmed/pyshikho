@@ -4,8 +4,9 @@ from django.db import models
 
 class Questions(models.Model):
     title = models.TextField()
+    slug = models.TextField(null=True)
     description = models.TextField()
-    solution = models.TextField()
+    # solution = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
