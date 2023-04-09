@@ -22,22 +22,22 @@ def questions(request):
     diction = { 'question_list' : questions}
     return render(request, 'questions/questions.html', context=diction)
    
-def index(request):
+def try_it(request, id):
     # Store input numbers
     import datetime
     now = datetime.datetime.now()
     result = now.strftime("%Y-%m-%d %H:%M:%S")
-    template = loader.get_template('index.html')
+    template = loader.get_template('questions/try.html')
     context = {
-        'result': '',
+        'result': 'id',
     }
     return HttpResponse(template.render(context, request))
 
-def create(request):
+def result(request):
     write_file(request.POST.get('text',''))
-    output = result()
+    output = execute()
 
-    template = loader.get_template('index.html')
+    template = loader.get_template('questions/try.html')
     context = {
         'result': output,
         'text': request.POST.get('text',''),
@@ -50,7 +50,7 @@ def write_file(data):
     file.writelines(data)
     file.close()
 
-def result():
+def execute():
     result = subprocess.run(['python', 'scripts/user_input.py'], capture_output=True)
 
     if result.returncode == 0:

@@ -8,5 +8,6 @@ urlpatterns = [
     path('',views.home),
     path('about/',views.about),
     path('questions/',views.questions),
-    # path('questions/', include('questions.urls')),
+    path('try/{id}/', views.try_it),
+    path('result/', views.result),
 ]
