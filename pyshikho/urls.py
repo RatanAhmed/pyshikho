@@ -8,6 +8,6 @@ urlpatterns = [
     path('',views.home),
     path('about/',views.about),
     path('questions/',views.questions),
-    path('try/{id}/', views.try_it),
-    path('result/', views.result),
+    path('try/<int:id>', views.try_it),
+    path('result/<int:id>', views.result),
 ]

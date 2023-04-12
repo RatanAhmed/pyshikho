@@ -24,24 +24,24 @@ def questions(request):
    
 def try_it(request, id):
     # Store input numbers
-    import datetime
-    now = datetime.datetime.now()
-    result = now.strftime("%Y-%m-%d %H:%M:%S")
+    question = Questions.objects.get(id = id)
     template = loader.get_template('questions/try.html')
     context = {
-        'result': 'id',
+        'result': '', 
+        'question' : question,
     }
     return HttpResponse(template.render(context, request))
 
-def result(request):
+def result(request, id):
+    question = Questions.objects.get(id = id)
     write_file(request.POST.get('text',''))
-    output = execute()
-
+    output = execute(request)
     template = loader.get_template('questions/try.html')
     context = {
         'result': output,
         'text': request.POST.get('text',''),
         'user_input': request.POST.get('user_input',''),
+        'question' : question,
     }
     return HttpResponse(template.render(context, request))
 
@@ -50,11 +50,15 @@ def write_file(data):
     file.writelines(data)
     file.close()
 
-def execute():
-    result = subprocess.run(['python', 'scripts/user_input.py'], capture_output=True)
+def execute(request):
+    input_text = request.POST.get('user_input')
+    # Encode the input as bytes
+    input_bytes = input_text.encode()
+
+    result = subprocess.run(['python', 'scripts/user_input.py'], input=input_bytes, capture_output=True,  )
 
     if result.returncode == 0:
-        output = result.stdout.decode("utf-8")
+        output = result.stdout.decode()
     else:
         output = result.stderr.decode("utf-8")
     return output.split('\n')
