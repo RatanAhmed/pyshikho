@@ -66,7 +66,7 @@
     <section class="hero_section ">
       <div class="hero-container">
 
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
             <div class="col-3">
               <div id="list-example" class="list-group scrollspy-example">
@@ -79,13 +79,13 @@
               </div>
             </div>
             <div class="col-9">
-              <div data-spy="scroll" data-target="#list-example" data-offset="0"  data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+              <div data-spy="scroll" data-target="#list-example" data-offset="0"  data-bs-smooth-scroll="true" class="scrollspy-example pr-4" tabindex="0">
                 {% if question_list %}
                 {% for question in question_list %}
                 
                   <div class="card mb-3">
-                    <div class="card-header">
-                      <h4 class="mt-2" id="list-item-{{ question.id }}">{{ question.title }}</h4>
+                    <div class="card-header py-1">
+                      <h5 class="mt-2" id="list-item-{{ question.id }}">{{ question.title }}</h5>
                     </div>
                     <div class="card-body">
                       <p class="text-white">{{ question.description | safe }}</p>
