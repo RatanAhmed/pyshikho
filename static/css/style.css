@@ -76,11 +76,16 @@ nav.navbar.navbar-expand-lg {
 }
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-link {
-  padding: 10px 20px;
-  color: #f7f6f7;
+  padding: 5px 20px;
+  color: #ffffff;
   text-align: center;
 }
-
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #7bce4b;
+  font-weight: 600;
+}
 
 a,
 a:hover,
@@ -562,7 +567,7 @@ a:focus {
 
 .scrollspy-example {
   position: relative;
-  height: 100vh;
+  height: 1370px;
   margin-top: 0.5rem;
   overflow: auto;
 }

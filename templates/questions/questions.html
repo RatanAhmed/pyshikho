@@ -36,7 +36,7 @@
   <div class="top_container">
     <!-- header section strats -->
     <header class="header_section">
-      <nav class="navbar navbar-expand-lg custom_nav-container navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
         <div class="container">
           <a class="navbar-brand" href="/">
             <span>Pyshikho</span>
@@ -93,7 +93,7 @@
                       <p class="text-white">{{ question.description | safe }}</p>
                     </div>
                     <div class="card-footer">
-                      <a class="btn btn-sm btn-success" href="/try/{{ question.id }}">Try It</a>
+                      <a class="btn btn-sm btn-success" target="_blank" href="/try/{{ question.id }}">Try It</a>
                     </div>
                   </div>
                 {% endfor %}
