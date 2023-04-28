@@ -83,16 +83,6 @@
         <div class="hero_img-container">
           <div>
             <img src="{% static 'images/hero.png'%}" alt="" class="img-fluid">
-            <form class="form-inline">
-              <div class="d-flex">
-                <div class="col-10">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="col-2">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -108,49 +98,12 @@
           </div>
         </div>
     </form>
+    <br>
       
     </div>
   </section>
   <!-- end header section -->
-  <section class="hero_section ">
-    <div class="hero-container">
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-3">
-            <div id="list-example" class="list-group scrollspy-example">
-              {% if question_list %}
-              {% for question in question_list %}
-              <a class="list-group-item list-group-item-action"
-                href="#list-item-{{ question.id }}">{{ question.title }}</a>
-              {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-          <div class="col-9">
-            <div data-spy="scroll" data-target="#list-example" data-offset="0"  data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-              {% if question_list %}
-              {% for question in question_list %}
-              
-                <div class="card mb-3">
-                  <div class="card-header">
-                    <h4 class="mt-2" id="list-item-{{ question.id }}">{{ question.title }}</h4>
-                  </div>
-                  <div class="card-body">
-                    <p class="text-white">{{ question.description | safe }}</p>
-                  </div>
-                  <div class="card-footer">
-                    <a class="btn btn-sm btn-success" href="/try/{{ question.id }}">Try It</a>
-                  </div>
-                </div>
-              {% endfor %}
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   
   <section class="info_section layout_padding-top">
     <div class="info_logo-box">
