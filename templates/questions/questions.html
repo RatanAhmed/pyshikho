@@ -65,40 +65,50 @@
       </nav>
 
     </header>
+    
+    
     <section class="hero_section ">
       <div class="hero-container">
 
-        <div class="container">
-          <div class="row">
-            <div class="col-3">
-              <div id="list-example" class="list-group scrollspy-example">
-                {% if question_list %}
-                {% for question in question_list %}
-                <a class="list-group-item list-group-item-action"
-                  href="#list-item-{{ question.id }}">{{ question.title }}</a>
-                {% endfor %}
-                {% endif %}
-              </div>
+        <div class="container bg-light">
+          <div class="row d-flex">
+            <div class="nav nav-pills scrollspy-example col-3" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+              {% if question_list %}
+              {% for question in question_list %}
+                <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">{{question.title}}</a>
+              {% endfor %}
+              {% endif %}
             </div>
-            <div class="col-9">
-              <div data-spy="scroll" data-target="#list-example" data-offset="0"  data-bs-smooth-scroll="true" class="scrollspy-example pr-4" tabindex="0">
-                {% if question_list %}
-                {% for question in question_list %}
-                
-                  <div class="card mb-3">
-                    <div class="card-header py-1">
-                      <h5 class="mt-2" id="list-item-{{ question.id }}">{{ question.title }}</h5>
+            <div class="tab-content col-9 p-0 m-0" id="v-pills-tabContent">
+              {% if question_list %}
+              {% for question in question_list %}
+    
+              <div class="tab-pane fade show {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}" role="tabpanel" aria-labelledby="v-pills-{{question.id}}-tab">
+                  <div class="card p-0 m-0 card-scroll">
+                    <div class="card-header">
+                      <h4 class="" id="list-item-{{ question.id }}">{{ question.title }}</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="overflow-y: scroll;">
                       <p class="text-white">{{ question.description | safe }}</p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between">
                       <a class="btn btn-sm btn-success" target="_blank" href="/try/{{ question.id }}">Try It</a>
+                      <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end mb-0">
+                          <li class="page-item">
+                            <a class="page-link" href="#v-pills-{{question.id}}">Previous</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{pre}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">Next</a>
+                            <!-- <a class="page-link" href="#v-pills-{{question.id}}">Next</a> -->
+                          </li>
+                        </ul>
+                      </nav>
                     </div>
                   </div>
-                {% endfor %}
-                {% endif %}
               </div>
+              {% endfor %}
+              {% endif %}
             </div>
           </div>
         </div>

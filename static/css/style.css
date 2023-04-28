@@ -84,7 +84,7 @@ nav.navbar.navbar-expand-lg {
 .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #7bce4b;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 a,
@@ -567,9 +567,13 @@ a:focus {
 
 .scrollspy-example {
   position: relative;
-  height: 1370px;
+  height: 85vh;
   margin-top: 0.5rem;
   overflow: auto;
+  padding-left: 10px;
+}
+.card-scroll {
+  height: 86vh;
 }
 
 /* end footer section*/
