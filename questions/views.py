@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from questions.models import Questions 
+from django.http import JsonResponse
+
 import subprocess
 import os
-
 # Create your views here.
 
 def home(request):
@@ -62,3 +63,9 @@ def execute(request):
     else:
         output = result.stderr.decode("utf-8")
     return output.split('\n')
+
+def search(request):
+    query = request.GET.get('q')
+    results = Questions.objects.filter(title__icontains=query)
+    data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
+    return JsonResponse({'results': data})

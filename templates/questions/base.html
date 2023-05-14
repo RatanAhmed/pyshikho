@@ -90,16 +90,18 @@
   </div>
   <section>
     <div class="container" style="border-radius: 100px;">
-      <form>
+      <form id="search-form">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+          <input type="text" class="form-control" name="q" placeholder="Search" aria-label="Search ..." aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+            <button class=" form-control" type="submit"><i class="fa fa-search"></i></button>
           </div>
         </div>
     </form>
-    <br>
-      
+      <table class="table table-sm text-white table-borderless mt-3" width="100%">
+          <tbody id="search-results">
+          </tbody>
+      </table>
     </div>
   </section>
   <!-- end header section -->
@@ -203,7 +205,26 @@
 
   <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
-
+  <script>
+    $(function() {
+        $('#search-form').submit(function(event) {
+            event.preventDefault();
+            var query = $('input[name="q"]').val();
+            $.ajax({
+                url: '/search',
+                data: {q: query},
+                success: function(response) {
+                    var results = response.results;
+                    var html = '';
+                    for (var i = 0; i < results.length; i++) {
+                        html += '<td width="10%"><a class="text-white" target="_blank" href="/try/' + results[i].id + '">' + results[i].title + '</a></td></tr>';
+                    }
+                    $('#search-results').html(html);
+                }
+            });
+        });
+    });
+    </script>
 
 </body>
 
