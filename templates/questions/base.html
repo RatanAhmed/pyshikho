@@ -92,7 +92,7 @@
     <div class="container" style="border-radius: 100px;">
       <form id="search-form">
         <div class="input-group">
-          <input type="text" class="form-control" name="q" placeholder="Search" aria-label="Search ..." aria-describedby="basic-addon2">
+          <input type="text" class="form-control" name="q" placeholder="Type and press enter to search ..." aria-label="Search ..." aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class=" form-control" type="submit"><i class="fa fa-search"></i></button>
           </div>
@@ -217,7 +217,7 @@
                     var results = response.results;
                     var html = '';
                     for (var i = 0; i < results.length; i++) {
-                        html += '<td width="10%"><a class="text-white" target="_blank" href="/try/' + results[i].id + '">' + results[i].title + '</a></td></tr>';
+                        html += '<tr><td width="10%"><a class="text-white" target="_blank" href="/try/' + results[i].id + '">' + results[i].title + '</a></td></tr>';
                     }
                     $('#search-results').html(html);
                 }
