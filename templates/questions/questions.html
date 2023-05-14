@@ -72,14 +72,15 @@
 
         <div class="container bg-light">
           <div class="row d-flex">
-            <div class="nav nav-pills scrollspy-example col-3" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+            <div class="nav nav-pills d-flex scrollspy-example col-4" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
               {% if question_list %}
               {% for question in question_list %}
-                <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">{{question.title}}</a>
-              {% endfor %}
+                <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">{{ question.title | truncatechars:50 }}
+                <a class="page-link" target="_blank" href="/try/{{ question.id }}">Try It</a></a><br>
+                {% endfor %}
               {% endif %}
             </div>
-            <div class="tab-content col-9 p-0 m-0" id="v-pills-tabContent">
+            <div class="tab-content col-8 p-0 m-0" id="v-pills-tabContent">
               {% if question_list %}
               {% for question in question_list %}
     
@@ -92,15 +93,14 @@
                       <p class="text-white">{{ question.description | safe }}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                      <a class="btn btn-sm btn-success" target="_blank" href="/try/{{ question.id }}">Try It</a>
+                      <a class="page-link" target="_blank" href="/try/{{ question.id }}">Try This</a>
                       <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end mb-0">
                           <li class="page-item">
-                            <a class="page-link" href="#v-pills-{{question.id}}">Previous</a>
+                            <a class="page-link"  data-toggle="pill" href="#v-pills-{{question.id|add:-1}}" aria-controls="v-pills-{{question.id|add:-1}}">Previous</a>
                           </li>
                           <li class="page-item">
-                            <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{pre}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">Next</a>
-                            <!-- <a class="page-link" href="#v-pills-{{question.id}}">Next</a> -->
+                            <a class="page-link" data-toggle="pill" href="#v-pills-{{question.id|add:1}}" aria-controls="v-pills-{{question.id|add:1}}">Next</a>
                           </li>
                         </ul>
                       </nav>
@@ -214,6 +214,7 @@
 
   <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+  
 </body>
 
 </html>

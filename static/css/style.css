@@ -555,6 +555,12 @@ a:focus {
 
 }
 
+.try2{
+  position: relative;
+  right: -0;
+  top: 5px;
+}
+
 .footer_section p {
   color: #fdfdfe;
   margin: 0;
