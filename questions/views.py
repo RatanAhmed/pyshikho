@@ -10,7 +10,11 @@ import os
 
 def home(request):
     questions = Questions.objects.all()
-    diction = { 'question_list' : questions}
+    top_searches = Questions.objects.all().order_by('search_count')[:10]
+    diction = { 
+        'question_list' : questions,
+        'top_searches' : top_searches
+    }
     return render(request, 'questions/base.html', context=diction)
 
 def about(request):
@@ -65,6 +69,12 @@ def execute(request):
     return "<pre>{}</pre>".format(output)
 
 def search(request):
+    query = request.GET.get('q')
+    results = Questions.objects.filter(title__icontains=query)[:10]
+    data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
+    return JsonResponse({'results': data})
+
+def top_search():
     query = request.GET.get('q')
     results = Questions.objects.filter(title__icontains=query)
     data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
