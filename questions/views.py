@@ -62,7 +62,7 @@ def execute(request):
         output = result.stdout.decode()
     else:
         output = result.stderr.decode("utf-8")
-    return output.split('\n')
+    return "<pre>{}</pre>".format(output)
 
 def search(request):
     query = request.GET.get('q')

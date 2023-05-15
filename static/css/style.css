@@ -546,7 +546,9 @@ a:focus {
   border-top: 1px solid #898989;
   padding: 25px 0;
 }
-
+pre{
+  color: limegreen;
+}
 .info_section .social-box {
   margin: 0 auto;
   width: 400px;
