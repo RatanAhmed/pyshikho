@@ -37,6 +37,11 @@ def try_it(request, id):
     }
     return HttpResponse(template.render(context, request))
 
+def get_by_id(request, id):
+    question = Questions.objects.get(id = id)
+    data = {'id': question.id, 'title': question.title, 'description': question.description}
+    return JsonResponse({'result': data})
+
 def result(request, id):
     question = Questions.objects.get(id = id)
     write_file(request.POST.get('text',''))

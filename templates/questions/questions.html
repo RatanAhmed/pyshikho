@@ -63,47 +63,42 @@
           </div>
         </div>
       </nav>
-
     </header>
-    
-    
-    <section class="hero_section ">
-      <div class="hero-container">
 
+    <section class="hero_section">
+      <div class="hero-container" style="margin-top:20px !important">
         <div class="container bg-light">
           <div class="row d-flex">
             <div class="nav nav-pills d-flex scrollspy-example col-4" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
-              {% if question_list %}
-              {% for question in question_list %}
-                <a class="nav-link text-dark {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}-tab" data-toggle="pill" href="#v-pills-{{question.id}}" role="tab" aria-controls="v-pills-{{question.id}}" aria-selected="false">{{ question.title | truncatechars:50 }}
-                <a class="page-link" target="_blank" href="/try/{{ question.id }}">Try It</a></a><br>
-                {% endfor %}
-              {% endif %}
+              <div class="sidebar">
+                <ul id="sidebar-list" style="margin-left: -21px !important;">
+                  {% for question in question_list %}
+                    <li class="nav-link" style="list-style: inside;" data_id="{{ question.id }}">{{ question.title }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
             </div>
-            <div class="tab-content col-8 p-0 m-0" id="v-pills-tabContent">
+            <div class="tab-content col-8 p-0 m-0" >
+              
               {% if question_list %}
               {% for question in question_list %}
-    
               <div class="tab-pane fade show {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}" role="tabpanel" aria-labelledby="v-pills-{{question.id}}-tab">
                   <div class="card p-0 m-0 card-scroll">
-                    <div class="card-header">
-                      <h4 class="" id="list-item-{{ question.id }}">{{ question.title }}</h4>
+                    <div class="card-header d-flex">
+                      <div class="col-11">
+                        <h4 id="content-placeholder"></h4>
+                      </div>
+                      <div class="col-1 try-div">
+                        <button class="btn btn-sm btn-success" id="try-button">Try This</button>
+                      </div>
                     </div>
                     <div class="card-body" style="overflow-y: scroll;">
-                      <p class="text-white">{{ question.description | safe }}</p>
+                        <p id="details-placeholder"></p>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                      <a class="page-link" target="_blank" href="/try/{{ question.id }}">Try This</a>
-                      <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end mb-0">
-                          <li class="page-item">
-                            <a class="page-link"  data-toggle="pill" href="#v-pills-{{question.id|add:-1}}" aria-controls="v-pills-{{question.id|add:-1}}">Previous</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" data-toggle="pill" href="#v-pills-{{question.id|add:1}}" aria-controls="v-pills-{{question.id|add:1}}">Next</a>
-                          </li>
-                        </ul>
-                      </nav>
+                      
+                      <button class="btn btn-sm btn-success" id="previous-button">Previous</button>
+                      <button class="btn btn-sm btn-success" id="next-button">Next</button>
                     </div>
                   </div>
               </div>
@@ -114,6 +109,7 @@
         </div>
       </div>
     </section>
+    
   </div>
   <!-- end header section -->
    <!-- end contact section -->
@@ -214,6 +210,7 @@
 
   <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/custom.js'%}"></script>
   
 </body>
 

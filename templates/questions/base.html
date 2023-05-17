@@ -93,11 +93,12 @@
     <div class="container" style="border-radius: 100px;">
       <form id="search-form">
         <div class="input-group">
-          <input type="text" class="form-control" name="q" placeholder="Type and press enter to search more problems ..."
-            aria-label="Search ..." aria-describedby="basic-addon2" required>
-          <div class="input-group-append">
+          <input type="text" id="input" class="form-control" name="q"
+            placeholder="Type and press enter to search more problems ..." aria-label="Search ..."
+            aria-describedby="basic-addon2" required>
+          <!-- <div class="input-group-append">
             <button class=" form-control" type="submit"><i class="fa fa-search"></i></button>
-          </div>
+          </div> -->
         </div>
       </form>
       <table class="table table-sm text-white table-borderless mt-3" width="100%">
@@ -223,9 +224,10 @@
   <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
   <script>
     $(function () {
-      $('#search-form').submit(function (event) {
+      $('#input').on("keyup change", function (event) {
         event.preventDefault();
         var query = $('input[name="q"]').val();
+        if(query.trim().length >0 ){
         $.ajax({
           url: '/search',
           data: {
@@ -234,18 +236,21 @@
           success: function (response) {
             var results = response.results;
             var html = '';
-            if(results.length == 0){
-              html += '<tr><td width="%" class=" bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></td></tr>';
-            }else{
-              html += '<tr><td width="%" class=" "><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></td></tr>';
+            if (results.length == 0) {
+              html +=
+                '<tr><td width="%" class=" bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></td></tr>';
+            } else {
+              html +=
+                '<tr><td width="%" class=" "><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></td></tr>';
               for (var i = 0; i < results.length; i++) {
                 html += '<tr><td width="%"><a class="text-white" target="_blank" href="/try/' + results[i]
-                  .id + '">' + results[i].title + '</a></td></tr>';
+                  .id + '">' + results[i].title + '</a> </tr>';
+                  
               }
             }
             $('#search-results').html(html);
           }
-        });
+        });}
       });
     });
   </script>
