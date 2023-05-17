@@ -97,7 +97,7 @@
                       <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end mb-0">
                           <li class="page-item">
-                            <a class="page-link"  data-toggle="pill" href="#v-pills-{{question.id|add:-1}}" aria-controls="v-pills-{{question.id|add:-1}}">Previous</a>
+                            <a class="page-link"  data-toggle="pill" href="#v-pills-{%if question.id == 1%}{{question.id}}{%else%}{{question.id|add:-1}}{%endif%}" aria-controls="v-pills-{%if question.id == 1%}{{question.id}}{%else%}{{question.id|add:-1}}{%endif%}">Previous</a>
                           </li>
                           <li class="page-item">
                             <a class="page-link" data-toggle="pill" href="#v-pills-{{question.id|add:1}}" aria-controls="v-pills-{{question.id|add:1}}">Next</a>
