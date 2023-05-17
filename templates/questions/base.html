@@ -68,11 +68,12 @@
       <div class="hero-container container">
         <div class="hero_detail-box">
           <h1>
-            Best place to 
-            Learn Python 
+            Best place to
+            Learn Python
           </h1>
           <p>
-            Pyshikho is a python learning platform where you find many problems to learn. So lets Learn Python on Pyshikho...
+            Pyshikho is a python learning platform where you find many problems to learn. So lets Learn Python on
+            Pyshikho...
           </p>
           <div class="hero_btn-continer">
             <a href="/questions/" class="call_to-btn btn_white-border btn-cyan">
@@ -82,7 +83,7 @@
         </div>
         <div class="hero_img-container">
           <div>
-            <img src="{% static 'images/python2.png'%}" alt="" class="img-fluid">
+            <img src="{% static 'images/python3.png' %}" alt="" class="img-fluid">
           </div>
         </div>
       </div>
@@ -92,21 +93,37 @@
     <div class="container" style="border-radius: 100px;">
       <form id="search-form">
         <div class="input-group">
-          <input type="text" class="form-control" name="q" placeholder="Type and press enter to search ..." aria-label="Search ..." aria-describedby="basic-addon2">
-          <div class="input-group-append">
+          <input type="text" id="input" class="form-control" name="q"
+            placeholder="Type and press enter to search more problems ..." aria-label="Search ..."
+            aria-describedby="basic-addon2" required>
+          <!-- <div class="input-group-append">
             <button class=" form-control" type="submit"><i class="fa fa-search"></i></button>
-          </div>
+          </div> -->
         </div>
-    </form>
+      </form>
       <table class="table table-sm text-white table-borderless mt-3" width="100%">
-          <tbody id="search-results">
-          </tbody>
+        <tbody id="search-results">
+        </tbody>
       </table>
+    </div>
+    <div class="container">
+      <h5 class="badge bg-success text-white"> Top 10 searched problems ...</h5>
+      <!-- <table class="table table-bordered text-white">
+        <tbody> -->
+      <ol class="text-white">
+        {% if top_searches %}
+        {% for question in top_searches %}
+        <li><a class="text-white" target="_blank" href="/try/{{ question.id }}">{{ question.title }}</a></td>
+          {% endfor %}
+          {% endif %}
+      </ol>
+      <!-- </tbody>
+      </table> -->
     </div>
   </section>
   <!-- end header section -->
-  
-  
+
+
   <section class="info_section layout_padding-top">
     <div class="info_logo-box">
       <h2>
@@ -206,25 +223,37 @@
   <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
   <script>
-    $(function() {
-        $('#search-form').submit(function(event) {
-            event.preventDefault();
-            var query = $('input[name="q"]').val();
-            $.ajax({
-                url: '/search',
-                data: {q: query},
-                success: function(response) {
-                    var results = response.results;
-                    var html = '';
-                    for (var i = 0; i < results.length; i++) {
-                        html += '<tr><td width="10%"><a class="text-white" target="_blank" href="/try/' + results[i].id + '">' + results[i].title + '</a></td></tr>';
-                    }
-                    $('#search-results').html(html);
-                }
-            });
-        });
+    $(function () {
+      $('#input').on("keyup change", function (event) {
+        event.preventDefault();
+        var query = $('input[name="q"]').val();
+        if(query.trim().length >0 ){
+        $.ajax({
+          url: '/search',
+          data: {
+            q: query
+          },
+          success: function (response) {
+            var results = response.results;
+            var html = '';
+            if (results.length == 0) {
+              html +=
+                '<tr><td width="%" class=" bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></td></tr>';
+            } else {
+              html +=
+                '<tr><td width="%" class=" "><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></td></tr>';
+              for (var i = 0; i < results.length; i++) {
+                html += '<tr><td width="%"><a class="text-white" target="_blank" href="/try/' + results[i]
+                  .id + '">' + results[i].title + '</a> </tr>';
+                  
+              }
+            }
+            $('#search-results').html(html);
+          }
+        });}
+      });
     });
-    </script>
+  </script>
 
 </body>
 

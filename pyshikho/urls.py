@@ -10,5 +10,6 @@ urlpatterns = [
     path('search/',views.search),
     path('questions/',views.questions),
     path('try/<int:id>', views.try_it),
+    path('question/<int:id>', views.get_by_id),
     path('result/<int:id>', views.result),
 ]

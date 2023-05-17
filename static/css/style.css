@@ -517,7 +517,13 @@ a:focus {
   font-size: 22px;
 }
 
-
+#try-button{
+  width: max-content !important;
+  margin-left: -10px;
+}
+.try-div{
+  align-self: self-end;
+}
 
 .info_section .form_container input {
   width: 225px;
@@ -546,7 +552,9 @@ a:focus {
   border-top: 1px solid #898989;
   padding: 25px 0;
 }
-
+pre{
+  color: limegreen;
+}
 .info_section .social-box {
   margin: 0 auto;
   width: 400px;
@@ -588,13 +596,13 @@ a:focus {
 
 .scrollspy-example {
   position: relative;
-  height: 85vh;
+  height: 75vh;
   margin-top: 0.5rem;
   overflow: auto;
   padding-left: 10px;
 }
 .card-scroll {
-  height: 86vh;
+  height: 76vh;
 }
 
 /* end footer section*/

@@ -10,7 +10,11 @@ import os
 
 def home(request):
     questions = Questions.objects.all()
-    diction = { 'question_list' : questions}
+    top_searches = Questions.objects.all().order_by('search_count')[:10]
+    diction = { 
+        'question_list' : questions,
+        'top_searches' : top_searches
+    }
     return render(request, 'questions/base.html', context=diction)
 
 def about(request):
@@ -32,6 +36,11 @@ def try_it(request, id):
         'question' : question,
     }
     return HttpResponse(template.render(context, request))
+
+def get_by_id(request, id):
+    question = Questions.objects.get(id = id)
+    data = {'id': question.id, 'title': question.title, 'description': question.description}
+    return JsonResponse({'result': data})
 
 def result(request, id):
     question = Questions.objects.get(id = id)
@@ -62,9 +71,15 @@ def execute(request):
         output = result.stdout.decode()
     else:
         output = result.stderr.decode("utf-8")
-    return output.split('\n')
+    return "<pre>{}</pre>".format(output)
 
 def search(request):
+    query = request.GET.get('q')
+    results = Questions.objects.filter(title__icontains=query)[:10]
+    data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
+    return JsonResponse({'results': data})
+
+def top_search():
     query = request.GET.get('q')
     results = Questions.objects.filter(title__icontains=query)
     data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
