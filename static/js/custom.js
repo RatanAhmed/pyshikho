@@ -1,3 +1,5 @@
+"use strict";
+
 // Get references to DOM elements
 const sidebarList = document.getElementById('sidebar-list');
 const contentPlaceholder = document.getElementById('content-placeholder');
@@ -7,16 +9,20 @@ const nextButton = document.getElementById('next-button');
 const tryButton = document.getElementById('try-button');
 
 // Set initial state
+let preItemIndex = -1;
 let currentItemIndex = 0;
-let preItemIndex = 0;
-showContent(currentItemIndex);
+let nextItemIndex = 1;
 
-// Function to show content based on index
-function showContent(index, pre) {
+activate(currentItemIndex);
+function activate(index) {
+  console.log(index);
+
   // Get the list item at the specified index
-  const listItem = sidebarList.getElementsByTagName('li')[index];
-  const preItem = sidebarList.getElementsByTagName('li')[pre];
-   
+  const currentItem = sidebarList.getElementsByTagName('li')[index];
+  const preItem = sidebarList.getElementsByTagName('li')[index-1];
+  const nextItem = sidebarList.getElementsByTagName('li')[index+1];
+  const activeItem = $("li>nav-item.active");
+  
   // Clear the content placeholder
   contentPlaceholder.innerHTML = '';
   detailsPlaceholder.innerHTML = '';
@@ -24,15 +30,18 @@ function showContent(index, pre) {
   if(preItem){
     preItem.classList.remove("active");
   }
-  listItem.classList.add("active");
+ 
+  // activeItem.remove("active");
+
+  currentItem.classList.add("active");
   tryButton.setAttribute("data_id",index+1);
 
   // Show the content in the placeholder
-  const content = listItem.innerHTML;
+  const content = currentItem.innerHTML;
   contentPlaceholder.innerHTML = content;
   
   $.ajax({
-    url: '/question/'+listItem.getAttribute('data_id'),
+    url: '/question/'+currentItem.getAttribute('data_id'),
 
     success: function (response) {
         var question = response.result;
@@ -43,29 +52,56 @@ function showContent(index, pre) {
   // Disable/enable buttons based on the current index
   previousButton.disabled = index === 0;
   nextButton.disabled = index === sidebarList.children.length - 1;
+  
 }
+// showContent(preItemIndex, currentItemIndex, nextItemIndex);
+
+$('#sidebar-list').on('click', (e) => {
+  currentItemIndex = e.target.getAttribute('data_id');
+
+  let activeList = $('#sidebar-list').find('li.active');
+  for (var i = 0; i < activeList.length; i++) {
+    activeList[i].classList.remove('active');
+  }
+  
+  activate(currentItemIndex-1);
+});
 
 // Event listener for previous button
 previousButton.addEventListener('click', () => {
+  let activeList = $('#sidebar-list').find('li.active');
+  for (var i = 0; i < activeList.length; i++) {
+    activeList[i].classList.remove('active');
+  }
   if (currentItemIndex > 0) {
-    preItemIndex = currentItemIndex
     currentItemIndex--;
-    showContent(currentItemIndex,preItemIndex);
+    activate(currentItemIndex);
   }
 });
 
 // Event listener for next button
 nextButton.addEventListener('click', () => {
-  if (currentItemIndex < sidebarList.children.length - 1) {
-    preItemIndex = currentItemIndex
-    currentItemIndex++;
-    
-    showContent(currentItemIndex, preItemIndex);
+  let activeList = $('#sidebar-list').find('li.active');
+  for (var i = 0; i < activeList.length; i++) {
+    activeList[i].classList.remove('active');
   }
+    currentItemIndex++
+    activate(currentItemIndex, );
 });
 
 // Event listener for next button
 tryButton.addEventListener('click', () => {
     window.open('/try/'+tryButton.getAttribute('data_id'))
 });
+
+$(document).ready(function() {
+
+  var $scroll = $('.sidebar');
+  
+  $(this).scrollTop($('li.active').position().top);
+  
+  
+  });
+
+
 

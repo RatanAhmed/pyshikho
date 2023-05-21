@@ -73,7 +73,7 @@
               <div class="sidebar">
                 <ul id="sidebar-list" style="margin-left: -21px !important;">
                   {% for question in question_list %}
-                    <li class="nav-link" style="list-style: inside;" data_id="{{ question.id }}"><a class="">{{ question.title }}</a></a>
+                    <li class="nav-link" style="list-style: inside;" data_id="{{ question.id }}"><a data_id="{{ question.id }}" id="this-button" href="#"  class="m-0 p-0 text-dark">{{ question.title }}</a></a>
                   {% endfor %}
                 </ul>
               </div>
