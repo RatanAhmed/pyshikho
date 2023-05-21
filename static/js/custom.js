@@ -1,12 +1,12 @@
 "use strict";
 
 // Get references to DOM elements
-const sidebarList = document.getElementById('sidebar-list');
-const contentPlaceholder = document.getElementById('content-placeholder');
-const detailsPlaceholder = document.getElementById('details-placeholder');
-const previousButton = document.getElementById('previous-button');
-const nextButton = document.getElementById('next-button');
-const tryButton = document.getElementById('try-button');
+const sidebarList = document.getElementById("sidebar-list");
+const contentPlaceholder = document.getElementById("content-placeholder");
+const detailsPlaceholder = document.getElementById("details-placeholder");
+const previousButton = document.getElementById("previous-button");
+const nextButton = document.getElementById("next-button");
+const tryButton = document.getElementById("try-button");
 
 // Set initial state
 let preItemIndex = -1;
@@ -14,94 +14,77 @@ let currentItemIndex = 0;
 let nextItemIndex = 1;
 
 activate(currentItemIndex);
-function activate(index) {
-  console.log(index);
 
+function activate(index) {
   // Get the list item at the specified index
-  const currentItem = sidebarList.getElementsByTagName('li')[index];
-  const preItem = sidebarList.getElementsByTagName('li')[index-1];
-  const nextItem = sidebarList.getElementsByTagName('li')[index+1];
-  const activeItem = $("li>nav-item.active");
-  
+  const preItem = sidebarList.getElementsByTagName("li")[index - 1];
+  const currentItem = sidebarList.getElementsByTagName("li")[index];
+  const nextItem = sidebarList.getElementsByTagName("li")[index + 1];
+
   // Clear the content placeholder
-  contentPlaceholder.innerHTML = '';
-  detailsPlaceholder.innerHTML = '';
-  
-  if(preItem){
-    preItem.classList.remove("active");
-  }
- 
+  contentPlaceholder.innerHTML = "";
+  detailsPlaceholder.innerHTML = "";
+
+  // if (preItem) {
+  //   preItem.classList.remove("active");
+  // }
+
   // activeItem.remove("active");
+  let activeList = $("#sidebar-list").find("li.active");
+  for (var i = 0; i < activeList.length; i++) {
+    activeList[i].classList.remove("active");
+  }
 
   currentItem.classList.add("active");
-  tryButton.setAttribute("data_id",index+1);
+  tryButton.setAttribute("data_id", index + 1);
+
+  var $scroll = $(".scrollspy-example");
+  $(this).scrollTop($("li.active").position().top);
 
   // Show the content in the placeholder
   const content = currentItem.innerHTML;
   contentPlaceholder.innerHTML = content;
-  
+
   $.ajax({
-    url: '/question/'+currentItem.getAttribute('data_id'),
+    url: "/question/" + currentItem.getAttribute("data_id"),
 
     success: function (response) {
-        var question = response.result;
-        detailsPlaceholder.innerHTML = question.description;
-    }
+      var question = response.result;
+      detailsPlaceholder.innerHTML = question.description;
+    },
   });
-  
+
   // Disable/enable buttons based on the current index
   previousButton.disabled = index === 0;
   nextButton.disabled = index === sidebarList.children.length - 1;
-  
 }
 // showContent(preItemIndex, currentItemIndex, nextItemIndex);
 
-$('#sidebar-list').on('click', (e) => {
-  currentItemIndex = e.target.getAttribute('data_id');
-
-  let activeList = $('#sidebar-list').find('li.active');
-  for (var i = 0; i < activeList.length; i++) {
-    activeList[i].classList.remove('active');
-  }
-  
-  activate(currentItemIndex-1);
+$("#sidebar-list").on("click", (e) => {
+  currentItemIndex = e.target.getAttribute("data_id");
+  activate(currentItemIndex - 1);
 });
 
 // Event listener for previous button
-previousButton.addEventListener('click', () => {
-  let activeList = $('#sidebar-list').find('li.active');
-  for (var i = 0; i < activeList.length; i++) {
-    activeList[i].classList.remove('active');
-  }
+previousButton.addEventListener("click", () => {
   if (currentItemIndex > 0) {
-    currentItemIndex--;
-    activate(currentItemIndex);
+    // currentItemIndex = currentItemIndex-2;
+    activate(currentItemIndex-2);
   }
 });
 
 // Event listener for next button
-nextButton.addEventListener('click', () => {
-  let activeList = $('#sidebar-list').find('li.active');
-  for (var i = 0; i < activeList.length; i++) {
-    activeList[i].classList.remove('active');
-  }
-    currentItemIndex++
-    activate(currentItemIndex, );
+nextButton.addEventListener("click", () => {
+  currentItemIndex++;
+  activate(currentItemIndex);
 });
 
 // Event listener for next button
-tryButton.addEventListener('click', () => {
-    window.open('/try/'+tryButton.getAttribute('data_id'))
+tryButton.addEventListener("click", () => {
+  window.open("/try/" + tryButton.getAttribute("data_id"));
 });
 
-$(document).ready(function() {
-
-  var $scroll = $('.sidebar');
-  
-  $(this).scrollTop($('li.active').position().top);
-  
-  
-  });
-
-
-
+$(document).ready(function () {
+  var $scroll = $(".scrollspy-example");
+  $(this).scrollTop($("li.active").position().top);
+});
