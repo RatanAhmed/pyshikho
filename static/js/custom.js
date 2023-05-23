@@ -76,4 +76,9 @@ tryButton.addEventListener("click", () => {
   window.open("/try/" + tryButton.getAttribute("data_id"));
 });
 
+$(document).ready(function () {
+  var $scroll = $(".scrollspy-example");
+  $(this).scrollTop($("li.active").position().top);
+});
+
 
