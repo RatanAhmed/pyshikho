@@ -15,12 +15,9 @@
 
   <title>Pyshikho</title>
 
-
-
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
-  <!-- progress barstle -->
-  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css'%}">
+
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
   <!-- font wesome stylesheet -->
@@ -29,7 +26,6 @@
   <link href="{% static 'css/style.css'%}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css'%}">
 </head>
 
 <body>
@@ -113,7 +109,7 @@
       <ol class="text-white">
         {% if top_searches %}
         {% for question in top_searches %}
-        <li><a class="text-white" target="" href="/try/{{ question.id }}">{{ question.title }}</a></td>
+        <li><a class="text-white" href="/try/{{ question.id }}/">{{ question.title }}</a></td>
           {% endfor %}
           {% endif %}
       </ol>
