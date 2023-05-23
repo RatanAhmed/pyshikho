@@ -107,13 +107,13 @@
       </table>
     </div>
     <div class="container">
-      <h5 class="badge bg-success text-white"> Top 10 searched problems ...</h5>
+      <h5 class="badge bg-success text-white"> Top 20 visited problems ...</h5>
       <!-- <table class="table table-bordered text-white">
         <tbody> -->
       <ol class="text-white">
         {% if top_searches %}
         {% for question in top_searches %}
-        <li><a class="text-white" target="_blank" href="/try/{{ question.id }}">{{ question.title }}</a></td>
+        <li><a class="text-white" target="" href="/try/{{ question.id }}">{{ question.title }}</a></td>
           {% endfor %}
           {% endif %}
       </ol>

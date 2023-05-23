@@ -10,7 +10,7 @@ import os
 
 def home(request):
     questions = Questions.objects.all()
-    top_searches = Questions.objects.all().order_by('search_count')[:10]
+    top_searches = Questions.objects.all().order_by('-search_count')[:20]
     diction = { 
         'question_list' : questions,
         'top_searches' : top_searches
@@ -30,6 +30,9 @@ def questions(request):
 def try_it(request, id):
     # Store input numbers
     question = Questions.objects.get(id = id)
+    question.search_count = question.search_count + 1
+    question.save()
+    
     template = loader.get_template('questions/try.html')
     context = {
         'result': '', 

@@ -2,32 +2,25 @@
 
 // Get references to DOM elements
 const sidebarList = document.getElementById("sidebar-list");
-const contentPlaceholder = document.getElementById("content-placeholder");
+const titlePlaceholder = document.getElementById("title-placeholder");
 const detailsPlaceholder = document.getElementById("details-placeholder");
 const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
 const tryButton = document.getElementById("try-button");
 
 // Set initial state
-let preItemIndex = -1;
 let currentItemIndex = 0;
-let nextItemIndex = 1;
+
 
 activate(currentItemIndex);
 
 function activate(index) {
   // Get the list item at the specified index
-  const preItem = sidebarList.getElementsByTagName("li")[index - 1];
   const currentItem = sidebarList.getElementsByTagName("li")[index];
-  const nextItem = sidebarList.getElementsByTagName("li")[index + 1];
 
-  // Clear the content placeholder
-  contentPlaceholder.innerHTML = "";
+  // Clear the title placeholder
+  titlePlaceholder.innerHTML = "";
   detailsPlaceholder.innerHTML = "";
-
-  // if (preItem) {
-  //   preItem.classList.remove("active");
-  // }
 
   // activeItem.remove("active");
   let activeList = $("#sidebar-list").find("li.active");
@@ -38,12 +31,10 @@ function activate(index) {
   currentItem.classList.add("active");
   tryButton.setAttribute("data_id", index + 1);
 
-  var $scroll = $(".scrollspy-example");
-  $(this).scrollTop($("li.active").position().top);
 
-  // Show the content in the placeholder
-  const content = currentItem.innerHTML;
-  contentPlaceholder.innerHTML = content;
+  // Show the title in the placeholder
+  const title = currentItem.innerHTML;
+  titlePlaceholder.innerHTML = title;
 
   $.ajax({
     url: "/question/" + currentItem.getAttribute("data_id"),
@@ -57,9 +48,10 @@ function activate(index) {
   // Disable/enable buttons based on the current index
   previousButton.disabled = index === 0;
   nextButton.disabled = index === sidebarList.children.length - 1;
-}
-// showContent(preItemIndex, currentItemIndex, nextItemIndex);
 
+  $("li.active").animate({ scrollTop: 0 }, "slow");
+}
+// showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
   activate(currentItemIndex - 1);
@@ -68,8 +60,8 @@ $("#sidebar-list").on("click", (e) => {
 // Event listener for previous button
 previousButton.addEventListener("click", () => {
   if (currentItemIndex > 0) {
-    // currentItemIndex = currentItemIndex-2;
-    activate(currentItemIndex-2);
+    currentItemIndex--;
+    activate(currentItemIndex);
   }
 });
 
@@ -84,7 +76,4 @@ tryButton.addEventListener("click", () => {
   window.open("/try/" + tryButton.getAttribute("data_id"));
 });
 
-$(document).ready(function () {
-  var $scroll = $(".scrollspy-example");
-  $(this).scrollTop($("li.active").position().top);
-});
+
