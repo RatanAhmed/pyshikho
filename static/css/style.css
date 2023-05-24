@@ -605,4 +605,13 @@ pre{
   height: 76vh;
 }
 
+.scrollspy-output {
+  /* position: relative; */
+  height: 100vh;
+  /* margin-top: 0.5rem; */
+  /* overflow: auto; */
+  /* padding-left: 10px; */
+  overflow-y: scroll;
+}
+
 /* end footer section*/

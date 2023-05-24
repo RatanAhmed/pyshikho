@@ -88,7 +88,7 @@
                                 <div class="">
                                     <h3>Stdin User inputs</h3>
                                     <textarea type="text" class="form-control bg-dark text-light" id="user_input" name="user_input"
-                                        rows="3" aria-describedby=""
+                                        rows="3" aria-describedby="" {% if question.is_input_required == 1 %} {{ 'required' }} {% else %} {{ 'readonly' }} {% endif %}
                                         placeholder="Enter each input on a separate line">{{ user_input }}</textarea>
                                 </div>
                                 <div class="text-end mt-3">
@@ -96,9 +96,9 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-6">
-                            <div class="alert alert-dark bg-dark text-white" role="alert" style="height: 100%;">
-                              <p class="p-0 m-0 text-white">
+                        <div class="col-6" >
+                            <div class="alert alert-dark bg-dark text-white  " role="alert" style="height: 100%;">
+                              <p class="p-0 m-0 text-white ">
                                 {{ result | safe  }}
                               </p>  
                             </div>

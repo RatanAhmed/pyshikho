@@ -8,6 +8,7 @@ class Questions(models.Model):
     description = models.TextField()
     solution = models.TextField(null=True)
     search_count = models.IntegerField(null=True)
+    is_input_required = models.IntegerField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
