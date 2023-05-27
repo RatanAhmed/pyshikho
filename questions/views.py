@@ -59,7 +59,7 @@ def result(request, id):
     return HttpResponse(template.render(context, request))
 
 def write_file(data):
-    file = open('scripts/user_input.py','w')
+    file = open('scripts/main.py','w')
     file.writelines(data)
     file.close()
 
@@ -68,7 +68,7 @@ def execute(request):
     # Encode the input as bytes
     input_bytes = input_text.encode()
 
-    result = subprocess.run(['python', 'scripts/user_input.py'], input=input_bytes, capture_output=True,  )
+    result = subprocess.run(['python', 'scripts/main.py'], input=input_bytes, capture_output=True,  )
 
     if result.returncode == 0:
         output = result.stdout.decode()
