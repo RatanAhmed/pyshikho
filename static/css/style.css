@@ -54,7 +54,7 @@ body.-webkit-scrollbar {
   border: none;
   opacity: 1;
 }
-.card > .card-header{
+.card > .card-header, .card-footer{
   background-color: inherit;
   color: white;
   border: none;
@@ -632,6 +632,7 @@ pre{
 .scrollspy-example {
   position: relative;
   height: 75vh;
+  min-height: 590px;
   margin-top: 0.5rem;
   overflow: auto;
   padding-left: 10px;
@@ -655,6 +656,7 @@ pre{
 
 .card-scroll {
   height: 76vh;
+  min-height: 600px;
 }
 .card{
   background-color: white;

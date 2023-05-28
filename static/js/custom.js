@@ -10,11 +10,14 @@ const tryButton = document.getElementById("try-button");
 
 // Set initial state
 let currentItemIndex = 0;
+let preItemIndex = 0;
+let nextItemIndex = 0;
 
 
 activate(currentItemIndex);
 
 function activate(index) {
+  // console.log(index);
   // Get the list item at the specified index
   const currentItem = sidebarList.getElementsByTagName("li")[index];
 
@@ -60,17 +63,22 @@ $("#sidebar-list").on("click", (e) => {
 // Event listener for previous button
 previousButton.addEventListener("click", () => {
   if (currentItemIndex > 0) {
-    currentItemIndex--;
-    activate(currentItemIndex);
+    let activeList = $("#sidebar-list").find("li.active");
+    preItemIndex = activeList[0].getAttribute("data_id");
+    currentItemIndex = preItemIndex-2;
   }else{
-    activate(currentItemIndex);
+    currentItemIndex--;
   }
+  // console.log(currentItemIndex);
+  activate(currentItemIndex);
 });
 
 // Event listener for next button
 nextButton.addEventListener("click", () => {
-    currentItemIndex++;
-    activate(currentItemIndex);
+  let activeList = $("#sidebar-list").find("li.active");
+  nextItemIndex = activeList[0].getAttribute("data_id");
+  currentItemIndex++;
+  activate(currentItemIndex);
 });
 
 // Event listener for next button
