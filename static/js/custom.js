@@ -38,14 +38,16 @@ function activate(index) {
   // Show the title in the placeholder
   const title = currentItem.innerHTML;
   titlePlaceholder.innerHTML = title;
-
+  // console.log('Data ID', currentItem.getAttribute("data_id"));
   $.ajax({
     url: "/question/" + currentItem.getAttribute("data_id"),
-
+    
     success: function (response) {
       var question = response.result;
+      // console.log( response);
       detailsPlaceholder.innerHTML = question.description;
     },
+    
   });
 
   // Disable/enable buttons based on the current index

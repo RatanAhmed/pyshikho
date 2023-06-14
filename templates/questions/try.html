@@ -57,8 +57,11 @@
                 <li class="nav-item ">
                   <a class="nav-link" href="/about/"> About </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="/questions/">Learn Python </a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/learn-python/">Learn Python </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/practice-python/">Practice Python </a>
                 </li>
               </ul>
             </div>
@@ -86,7 +89,7 @@
                                     {% endif %} 
                                 </div>
                                 <div class="">
-                                    <h3>Stdin User inputs</h3>
+                                    <h3>User inputs</h3>
                                     <textarea type="text" class="form-control bg-dark text-light" id="user_input" name="user_input"
                                         rows="3" aria-describedby="" {% if question.is_input_required == 1 %} {{ 'required' }} {% else %} {{ 'readonly' }} {% endif %}
                                         placeholder="Enter each input on a separate line">{{ user_input }}</textarea>
