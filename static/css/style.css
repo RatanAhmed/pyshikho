@@ -637,14 +637,14 @@ pre{
   overflow: auto;
   padding-left: 10px;
 }
-.scrollspy-example::-webkit-scrollbar{
+/* .scrollspy-example::-webkit-scrollbar{
   opacity: 0.6;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: auto;
-}
+} */
 .card-body::-webkit-scrollbar{
   opacity: 0.6;
   position: absolute;

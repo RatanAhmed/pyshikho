@@ -22,8 +22,15 @@ def about(request):
     diction = { 'question_list' : questions}
     return render(request, 'questions/about.html', context=diction)
 
+def learn_python(request):
+    # questions = Questions.objects.order_by('-id')
+    questions = Questions.objects.filter(learn_or_practice=0)
+    diction = { 'question_list' : questions}
+    return render(request, 'questions/questions.html', context=diction)
+   
 def questions(request):
-    questions = Questions.objects.all()
+    # questions = Questions.objects.order_by('-id')
+    questions = Questions.objects.filter(learn_or_practice=1)
     diction = { 'question_list' : questions}
     return render(request, 'questions/questions.html', context=diction)
    
@@ -78,7 +85,7 @@ def execute(request):
 
 def search(request):
     query = request.GET.get('q')
-    results = Questions.objects.filter(title__icontains=query)[:10]
+    results = Questions.objects.filter(title__icontains=query)[:50]
     data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
     return JsonResponse({'results': data})
 

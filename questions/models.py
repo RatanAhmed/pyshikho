@@ -9,6 +9,7 @@ class Questions(models.Model):
     solution = models.TextField(null=True)
     search_count = models.IntegerField(null=True)
     is_input_required = models.IntegerField(null=False)
+    learn_or_practice = models.IntegerField(null=False,default=0, help_text="0=Learn, 1=practice")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
