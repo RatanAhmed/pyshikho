@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Pyshikho</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+  
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/css-circular-prog-bar.css'%}">
+</head>
+
+<body class="text-white">
+  <div class="top_container">
+    <!-- header section strats -->
+    <header class="header_section">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>Pyshikho</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link" href="/"> Home</a>
+                </li>
+                <li class="nav-item show active">
+                  <a class="nav-link" aria-current="page" href="/about/"> About </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/learn-python/">Learn Python </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/practice-python/">Practice Python </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+    <!-- <section class="hero_section ">
+      <div class="hero-container container">
+        <div class="hero_detail-box">
+          <h1>
+            Best way
+            to fund
+            your study
+            abroad
+          </h1>
+          <p>
+            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam
+          </p>
+          <div class="hero_btn-continer">
+            <a href="" class="call_to-btn btn_white-border">
+              Read More
+            </a>
+          </div>
+        </div>
+        <div class="hero_img-container">
+          <div>
+            <img src="{% static 'images/hero.png'%}" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- about section -->
+    <section class="about_section mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about_img-container">
+              <img src="{% static 'images/about-2.png'%}" alt="" style="border-radius: 50%;">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about_detail-box">
+              <h3>
+                About Us
+              </h3>
+              <p class="text-justify">
+                Welcome to our Python problem-solving website for beginners! We are a team of experienced programmers who are passionate about solving challenging problems with Python and teaching others how to do the same
+                  <span id="dots">...</span>
+                  <span id="more" style="display: none;"><br>Our mission is to help beginners improve their problem-solving skills by providing a range of Python challenges, puzzles, and exercises that are designed to be engaging, challenging, and fun. We understand that problem-solving can be intimidating, especially for those who are new to programming, and that's why we've designed our challenges to be accessible to everyone.
+                    At our Python problem-solving website for beginners, you'll find a range of challenges that cover a variety of topics, from basic syntax to more advanced topics like algorithms and data structures. We offer step-by-step tutorials and solutions for each challenge, so you can learn at your own pace and see how the experts approach the problem.
+                    Our goal is to help you build your problem-solving skills and develop the confidence to tackle even the most challenging programming problems. We believe that with the right resources and support, anyone can become a skilled problem solver and build amazing things with Python.
+                    Thank you for choosing our Python problem-solving website for beginners. We are excited to help you improve your skills and become a confident problem solver!
+                  </span>
+              </p>
+              <div class="">
+                <button onclick="myFunction()" id="myBtn" class="btn_read_more">Read more</button>
+                <!-- <a href="#" onclick="myFunction()" id="myBtn" class="call_to-btn btn_white-border">
+                  Read More
+                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- why section -->
+    <section class="why_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="why_detail-box">
+              <h3>
+                Why learn on Pyshikho
+              </h3>
+              <p class="text-justify">
+                Learning Python from a problem-solving website step by step can be an excellent way to improve your programming skills and develop the confidence to tackle real-world programming challenges. Here are some reasons why you might consider learning Python from Pyshikho:
+                <span id="dots1">...</span>
+                  <span id="more1" style="display: none;"><br><br>Real-world problems: Pyshikho website focuses on solving real-world programming challenges. This means that you will learn how to solve problems that are similar to the ones you may encounter in the workplace or in personal projects. <br><br>
+
+                    Step-by-step approach: We offer a step-by-step approach to problem-solving, which means that you can follow along with the solutions at your own pace. This approach is ideal for beginners who are just starting to learn Python and want to build their problem-solving skills gradually. <br><br>
+                    
+                    Variety of challenges: Pyshikho offers a variety of challenges that cover different topics and difficulty levels. This means that you can choose the challenges that best suit your interests and skill level. <br><br>
+                    
+                    Hands-on learning: Pyshikho offers a hands-on approach to learning Python. You will have the opportunity to practice your problem-solving skills and gain practical experience with Python as you work through the challenges. <br><br>
+                    
+                    Expert guidance Pyshikho is designed by experienced Python programmers who are passionate about teaching others how to solve programming problems. You will have access to expert guidance and support as you learn and practice Python. <br><br>
+                    
+                    Overall Pyshikho offers a comprehensive and engaging way to learn Python step by step. Whether you're a beginner or an experienced programmer, you can benefit from the practical, hands-on approach to problem-solving that our website offers.
+                    
+                  </span>
+              </p>
+              <div class="">
+                <button onclick="myFunction1()" id="myBtn1" class="btn_read_more">Read more</button>
+                <!-- <a href="#" onclick="myFunction()" id="myBtn" class="call_to-btn btn_white-border">
+                  Read More
+                </a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="why_img-container">
+              <img src="{% static 'images/blocks.png'%}" alt="" style="border-radius: 50%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- end header section -->
+  
+  <div class="common_style">
+
+    
+
+
+    <!-- end about section -->
+
+
+    
+
+    <!-- end why section -->
+  </div>
+
+
+  <!-- client section -->
+  <section class="client_section layout_padding">
+    <h2 class="">
+      Contributors
+    </h2>
+    <div class="container">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="client_img-box">
+                  <img src="{% static 'images/sadiqsir.jpg'%}" alt="">
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="client_detail-box">
+                  <h5>
+                    Sadiq Iqbal
+                  </h5>
+                  <p>
+                    Advisor, Pyshikho
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="client_img-box">
+                  <img src="{% static 'images/shaykat.jpg'%}" alt="">
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="client_detail-box">
+                  <h5>
+                    Shaykat Al Redowan
+                  </h5>
+                  <p>
+                    Project Manager, Pyshikho
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="client_img-box">
+                  <img src="{% static 'images/ratan.jpg'%}" alt="">
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="client_detail-box">
+                  <h5>
+                    Md. Ratan Hawlader
+                  </h5>
+                  <p>
+                    Devloper, Pyshikho
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="client_img-box">
+                  <img src="{% static 'images/shad.jpg'%}" alt="">
+                </div>
+              </div>
+              <div class="col-md-9">
+                <div class="client_detail-box">
+                  <h5>
+                    Md. Shad Chowdhury
+                  </h5>
+                  <p>
+                    Devloper, Pyshikho
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- end client section -->
+
+
+  <!-- contact section -->
+
+  <!-- <section class="contact_section ">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="d-flex justify-content-center d-md-block">
+            <h2>
+              Contact Us
+            </h2>
+          </div>
+          <form action="">
+            <div class="contact_form-container">
+              <div>
+                <div>
+                  <input type="text" placeholder="Name">
+                </div>
+                <div>
+                  <input type="email" placeholder="Email">
+                </div>
+                <div>
+                  <input type="text" placeholder="Phone Number">
+                </div>
+                <div class="mt-5">
+                  <input type="text" placeholder="Message">
+                </div>
+                <div class="mt-5">
+                  <button type="submit">
+                    send
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="contact_img-box">
+            <img src="{% static 'images/blocks.png'%}" alt="" style="border-radius: 50%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- end contact section -->
+  <section class="info_section layout_padding-top">
+    <div class="info_logo-box">
+      <h2>
+        Pyshikho
+      </h2>
+    </div>
+    <div class="container layout_padding2">
+      <div class="row">
+        <!-- <div class="col-md-3">
+          <h5>
+            About Us
+          </h5>
+          <p>
+            dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r
+          </p>
+        </div> -->
+        <!-- <div class="col-md-3">
+          <h5>
+            Useful Link
+          </h5>
+          <ul>
+            <li>
+              <a href="">
+                Video games
+              </a>
+            </li>
+            <li>
+              <a href="">
+                Remote control
+              </a>
+            </li>
+            <li>
+              <a href="">
+                3d controller
+              </a>
+            </li>
+          </ul>
+        </div> -->
+        <div class="col-md-12 text-center">
+          <h5>
+            Contact Us
+          </h5>
+          <p>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> example@mail.com
+          </p>
+          <p>
+            <i class="fa fa-mobile" aria-hidden="true"></i> 012 3456 7890
+          </p>
+        </div>
+        <!-- <div class="col-md-3">
+
+          <div class="subscribe_container">
+            <h5>
+              Newsletter
+            </h5>
+            <div class="form_container">
+              <form action="">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div> -->
+      </div>
+    </div>
+    <div class="container">
+      <div class="social_container">
+
+        <div class="social-box">
+          <a href="">
+            <img src="{% static 'images/fb.png'%}" alt="">
+          </a>
+
+          <a href="">
+            <img src="{% static 'images/twitter.png'%}" alt="">
+          </a>
+          <a href="">
+            <img src="{% static 'images/linkedin.png'%}" alt="">
+          </a>
+          <a href="">
+            <img src="{% static 'images/instagram.png'%}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2019 All Rights Reserved By
+      <a href="#">Pyshikho</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js'%}"></script>
+  <script>
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more"; 
+        moreText.style.display = "none";
+        btnText.style.border = "none !important";
+        console.log(btnText.style.border)
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less"; 
+        moreText.style.display = "inline";
+        btnText.setAttribute(bor) = "none !important";
+        console.log(btnText.style.border)
+      }
+
+    }
+
+      function myFunction1() {
+      var dots1 = document.getElementById("dots1");
+      var moreText1 = document.getElementById("more1");
+      var btnText1 = document.getElementById("myBtn1");
+
+      if (dots1.style.display === "none") {
+        dots1.style.display = "inline";
+        btnText1.innerHTML = "Read more"; 
+        moreText1.style.display = "none";
+        
+      } else {
+        dots1.style.display = "none";
+        btnText1.innerHTML = "Read less"; 
+        moreText1.style.display = "inline";
+      }
+      
+    }
+  </script>
+
+
+</body>
+
+</html>

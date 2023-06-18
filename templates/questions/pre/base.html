@@ -3,18 +3,28 @@
 <html>
 
 <head>
+  <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
 
   <title>Pyshikho</title>
+
+  <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
   <link href="{% static 'css/style.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
   <link href="{% static 'css/responsive.css'%}" rel="stylesheet" />
 </head>
 
@@ -53,12 +63,66 @@
         </div>
       </nav>
     </header>
+    <section class="hero_section ">
+      <div class="hero-container container">
+        <div class="hero_detail-box">
+          <h1>
+            Best place to
+            Learn Python
+          </h1>
+          <p>
+            Pyshikho is a python learning platform where you find many problems to learn. So lets Learn Python on
+            Pyshikho...
+          </p>
+          <div class="hero_btn-continer">
+            <a href="/questions/" class="call_to-btn btn_white-border btn-cyan">
+              Get Start
+            </a>
+          </div>
+        </div>
+        <div class="hero_img-container">
+          <div>
+            <img src="{% static 'images/python3.png' %}" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  {% block body_block %}
-
-  {% endblock %}
-  
+  <section>
+    <div class="container" style="border-radius: 100px;">
+      <form id="search-form">
+        <div class="input-group">
+          <input type="text" id="input" class="form-control" name="q"
+            placeholder="Type and press enter to search more problems ..." aria-label="Search ..."
+            aria-describedby="basic-addon2" required>
+          <!-- <div class="input-group-append">
+            <button class=" form-control" type="submit"><i class="fa fa-search"></i></button>
+          </div> -->
+        </div>
+      </form>
+      <table class="table table-sm text-white table-borderless mt-3" width="100%">
+        <tbody id="search-results">
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+      <h5 class="badge bg-success text-white"> Top 20 visited problems ...</h5>
+      <!-- <table class="table table-bordered text-white">
+        <tbody> -->
+      <ol class="text-white">
+        {% if top_searches %}
+        {% for question in top_searches %}
+        <li><a class="text-white" href="/try/{{ question.id }}/">{{ question.title }}</a></td>
+          {% endfor %}
+          {% endif %}
+      </ol>
+      <!-- </tbody>
+      </table> -->
+    </div>
+  </section>
   <!-- end header section -->
+
+
   <section class="info_section layout_padding-top">
     <div class="info_logo-box">
       <h2>
@@ -145,6 +209,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>

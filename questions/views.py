@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from questions.models import Questions 
+from questions.models import Questions, Learn
 from django.http import JsonResponse
 
 import subprocess
@@ -15,7 +15,7 @@ def home(request):
         'question_list' : questions,
         'top_searches' : top_searches
     }
-    return render(request, 'questions/base.html', context=diction)
+    return render(request, 'questions/home.html', context=diction)
 
 def about(request):
     questions = Questions.objects.all()
@@ -24,13 +24,13 @@ def about(request):
 
 def learn_python(request):
     # questions = Questions.objects.order_by('-id')
-    questions = Questions.objects.filter(learn_or_practice=0)
+    questions = Learn.objects.all()
     diction = { 'question_list' : questions}
     return render(request, 'questions/questions.html', context=diction)
    
 def questions(request):
     # questions = Questions.objects.order_by('-id')
-    questions = Questions.objects.filter(learn_or_practice=1)
+    questions = Questions.objects.all()
     diction = { 'question_list' : questions}
     return render(request, 'questions/questions.html', context=diction)
    
