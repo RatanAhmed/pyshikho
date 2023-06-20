@@ -1,0 +1,100 @@
+{% extends "questions/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<section class="hero_section">
+    <div class="hero-container">
+      <div class="try-container container" style="padding: initial;">
+        <div class="d-flex">
+          <div class="nav nav-pills d-flex scrollspy-example col-4" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+            <div class="sidebar">
+              <ul id="sidebar-list" >
+                {% for question in question_list %}
+                  <li class="nav-link" data_id="{{ question.id }}"><a data_id="{{ question.id }}" id="this-button" href="#"  class="m-0 p-0 text-dark">{{ question.title }}</a></a>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="tab-content col-8 p-0 m-0" >
+            
+            {% if question_list %}
+            {% for question in question_list %}
+            <div class="tab-pane fade show {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}" role="tabpanel" aria-labelledby="v-pills-{{question.id}}-tab">
+                <div class="card p-0 m-0 card-scroll">
+                  <div class="card-header d-flex bg-none">
+                    <div class="col-11 px-0">
+                      <h4 id="title-placeholder"></h4>
+                    </div>
+                    <div class="col-1 try-div">
+                      <button class="btn btn-sm btn-success" id="try-button">Try This</button>
+                    </div>
+                  </div>
+                  <div class="card-body" style="overflow-y: scroll;">
+                      <p id="details-placeholder"></p>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between">
+                    
+                    <button class="btn btn-sm btn-success" id="previous-button">Previous</button>
+                    <button class="btn btn-sm btn-success" id="next-button">Next</button>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</div>
+
+{% endblock %}
+
+{% block script_block %}
+<script type="text/javascript" src="{% static 'js/custom.js'%}"></script>
+
+<script type="text/javascript">
+
+    function activate(index) {
+      // console.log(index);
+      // Get the list item at the specified index
+      const currentItem = sidebarList.getElementsByTagName("li")[index];
+    
+      // Clear the title placeholder
+      titlePlaceholder.innerHTML = "";
+      detailsPlaceholder.innerHTML = "";
+    
+      // activeItem.remove("active");
+      let activeList = $("#sidebar-list").find("li.active");
+      for (var i = 0; i < activeList.length; i++) {
+        activeList[i].classList.remove("active");
+      }
+    
+      currentItem.classList.add("active");
+      tryButton.setAttribute("data_id", index + 1);
+    
+    
+      // Show the title in the placeholder
+      const title = currentItem.innerHTML;
+      titlePlaceholder.innerHTML = title;
+      // console.log('Data ID', currentItem.getAttribute("data_id"));
+      $.ajax({
+        url: "/learn/" + currentItem.getAttribute("data_id"),
+        
+        success: function (response) {
+          var question = response.result;
+          // console.log( response);
+          detailsPlaceholder.innerHTML = question.description;
+        },
+        
+      });
+    
+      // Disable/enable buttons based on the current index
+      previousButton.disabled = index === 0;
+      nextButton.disabled = index === sidebarList.children.length - 1;
+    
+      $("li.active").animate({ scrollTop: 0 }, "slow");
+    }
+    </script>
+{% endblock %}

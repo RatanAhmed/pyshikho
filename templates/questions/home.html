@@ -1,6 +1,6 @@
 {% extends "questions/base.html" %}
 {% load static %}
-{% block body_block" %}
+{% block body_block %}
 
 <section class="hero_section ">
     <div class="hero-container container">
@@ -26,6 +26,7 @@
         </div>
     </div>
 </section>
+</div>
 <section>
     <div class="container" style="border-radius: 100px;">
         <form id="search-form">
@@ -52,4 +53,39 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block script_block %}
+<script>
+    $(function () {
+      $('#input').on("keyup change", function (event) {
+        event.preventDefault();
+        var query = $('input[name="q"]').val();
+        if(query.trim().length >0 ){
+        $.ajax({
+          url: '/search',
+          data: {
+            q: query
+          },
+          success: function (response) {
+            var results = response.results;
+            var html = '';
+            if (results.length == 0) {
+              html +=
+                '<tr><td width="%" class=" bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></td></tr>';
+            } else {
+              html +=
+                '<tr><td width="%" class=" "><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></td></tr>';
+              for (var i = 0; i < results.length; i++) {
+                html += '<tr><td width="%"><a class="text-white" target="_blank" href="/try/' + results[i]
+                  .id + '">' + results[i].title + '</a> </tr>';
+                  
+              }
+            }
+            $('#search-results').html(html);
+          }
+        });}
+      });
+    });
+  </script>
 {% endblock %}

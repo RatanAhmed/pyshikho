@@ -11,6 +11,7 @@ urlpatterns = [
     path('learn-python/',views.learn_python),
     path('practice-python/',views.questions),
     path("try/<int:id>/", views.try_it),
-    path('question/<int:id>', views.get_by_id),
+    path('learn/<int:id>', views.learn_by_id),
+    path('practice/<int:id>', views.practice_by_id),
     path('result/<int:id>', views.result),
 ]

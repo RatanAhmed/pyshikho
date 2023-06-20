@@ -16,46 +16,46 @@ let nextItemIndex = 0;
 
 activate(currentItemIndex);
 
-function activate(index) {
-  // console.log(index);
-  // Get the list item at the specified index
-  const currentItem = sidebarList.getElementsByTagName("li")[index];
+// function activate(index) {
+//   // console.log(index);
+//   // Get the list item at the specified index
+//   const currentItem = sidebarList.getElementsByTagName("li")[index];
 
-  // Clear the title placeholder
-  titlePlaceholder.innerHTML = "";
-  detailsPlaceholder.innerHTML = "";
+//   // Clear the title placeholder
+//   titlePlaceholder.innerHTML = "";
+//   detailsPlaceholder.innerHTML = "";
 
-  // activeItem.remove("active");
-  let activeList = $("#sidebar-list").find("li.active");
-  for (var i = 0; i < activeList.length; i++) {
-    activeList[i].classList.remove("active");
-  }
+//   // activeItem.remove("active");
+//   let activeList = $("#sidebar-list").find("li.active");
+//   for (var i = 0; i < activeList.length; i++) {
+//     activeList[i].classList.remove("active");
+//   }
 
-  currentItem.classList.add("active");
-  tryButton.setAttribute("data_id", index + 1);
+//   currentItem.classList.add("active");
+//   tryButton.setAttribute("data_id", index + 1);
 
 
-  // Show the title in the placeholder
-  const title = currentItem.innerHTML;
-  titlePlaceholder.innerHTML = title;
-  // console.log('Data ID', currentItem.getAttribute("data_id"));
-  $.ajax({
-    url: "/question/" + currentItem.getAttribute("data_id"),
+//   // Show the title in the placeholder
+//   const title = currentItem.innerHTML;
+//   titlePlaceholder.innerHTML = title;
+//   // console.log('Data ID', currentItem.getAttribute("data_id"));
+//   $.ajax({
+//     url: "/question/" + currentItem.getAttribute("data_id"),
     
-    success: function (response) {
-      var question = response.result;
-      // console.log( response);
-      detailsPlaceholder.innerHTML = question.description;
-    },
+//     success: function (response) {
+//       var question = response.result;
+//       // console.log( response);
+//       detailsPlaceholder.innerHTML = question.description;
+//     },
     
-  });
+//   });
 
-  // Disable/enable buttons based on the current index
-  previousButton.disabled = index === 0;
-  nextButton.disabled = index === sidebarList.children.length - 1;
+//   // Disable/enable buttons based on the current index
+//   previousButton.disabled = index === 0;
+//   nextButton.disabled = index === sidebarList.children.length - 1;
 
-  $("li.active").animate({ scrollTop: 0 }, "slow");
-}
+//   $("li.active").animate({ scrollTop: 0 }, "slow");
+// }
 // showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
