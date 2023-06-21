@@ -40,7 +40,7 @@ function activate(index) {
   titlePlaceholder.innerHTML = title;
   // console.log('Data ID', currentItem.getAttribute("data_id"));
   $.ajax({
-    url: "/practice/" + currentItem.getAttribute("data_id"),
+    url: "/learn/" + currentItem.getAttribute("data_id"),
     
     success: function (response) {
       var question = response.result;
@@ -56,6 +56,7 @@ function activate(index) {
 
   $("li.active").animate({ scrollTop: 0 }, "slow");
 }
+
 // showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
@@ -71,7 +72,7 @@ previousButton.addEventListener("click", () => {
   }else{
     currentItemIndex--;
   }
-  // console.log(currentItemIndex);
+  console.log(currentItemIndex);
   activate(currentItemIndex);
 });
 

@@ -8,7 +8,7 @@ urlpatterns = [
     path('',views.home),
     path('about/',views.about),
     path('search/',views.search),
-    path('learn-python/',views.learn_python),
+    path('learn-python/',views.learn_python,),
     path('practice-python/',views.questions),
     path("try/<int:id>/", views.try_it),
     path('learn/<int:id>', views.learn_by_id),

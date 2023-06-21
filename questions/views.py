@@ -26,7 +26,7 @@ def learn_python(request):
     # questions = Questions.objects.order_by('-id')
     questions = Learn.objects.all()
     diction = { 'question_list' : questions}
-    return render(request, 'questions/questions.html', context=diction)
+    return render(request, 'questions/learn.html', context=diction)
    
 def questions(request):
     # questions = Questions.objects.order_by('-id')
