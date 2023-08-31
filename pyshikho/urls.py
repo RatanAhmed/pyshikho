@@ -12,6 +12,7 @@ urlpatterns = [
     path('search/',views.search),
     path('learn-python/',views.learn_python,),
     path('practice-python/',views.questions),
+    path('next-pre/',views.next_pre),
     path("try/<int:id>/", views.try_it),
     path('learn/<int:id>', views.learn_by_id),
     path('practice/<int:id>', views.practice_by_id),

@@ -2,8 +2,10 @@
 
 // Get references to DOM elements
 const sidebarList = document.getElementById("sidebar-list");
+
 const titlePlaceholder = document.getElementById("title-placeholder");
 const detailsPlaceholder = document.getElementById("details-placeholder");
+
 const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
 const tryButton = document.getElementById("try-button");
@@ -59,7 +61,9 @@ function activate(index) {
 // showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
-  activate(currentItemIndex - 1);
+  currentItemIndex++;
+  console.log(currentItemIndex);
+  activate(currentItemIndex);
 });
 
 // Event listener for previous button
@@ -92,5 +96,3 @@ tryButton.addEventListener("click", () => {
 //   var $scroll = $(".scrollspy-example");
 //   $(this).scrollTop($("li.active").position().top);
 // });
-
-

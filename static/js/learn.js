@@ -6,7 +6,7 @@ const titlePlaceholder = document.getElementById("title-placeholder");
 const detailsPlaceholder = document.getElementById("details-placeholder");
 const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
-const tryButton = document.getElementById("learn-try-button");
+// const tryButton = document.getElementById("learn-try-button");
 
 // Set initial state
 let currentItemIndex = 0;
@@ -32,7 +32,7 @@ function activate(index) {
   }
 
   currentItem.classList.add("active");
-  tryButton.setAttribute("data_id", index + 1);
+  // tryButton.setAttribute("data_id", index + 1);
 
 
   // Show the title in the placeholder

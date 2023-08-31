@@ -1,5 +1,19 @@
 {% extends "questions/base.html" %}
 {% load static %}
+{% block menu_block %}
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="/"> Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about/"> About </a>
+</li>
+<li class="nav-item show active">
+  <a class="nav-link" href="/learn-python/">Learn Python </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/practice-python/">Practice Python </a>
+</li>
+{% endblock %}
 {% block body_block %}
 
 <section class="hero_section">
@@ -10,7 +24,7 @@
             <div class="sidebar">
               <ul id="sidebar-list" >
                 {% for question in question_list %}
-                  <li class="nav-link" data_id="{{ question.id }}"><a data_id="{{ question.id }}" id="this-button" href="#"  class="m-0 p-0 text-dark">{{ question.title }}</a></a>
+                  <li class="nav-link" data_id="{{ question.id }}"><a data_id="{{ question.id }}" id="this-button" href="#{{ question.slug }}"  class="m-0 p-0 text-dark">{{ question.title }}</a></a>
                 {% endfor %}
               </ul>
             </div>
@@ -22,11 +36,8 @@
             <div class="tab-pane fade show {%if question.id == 1%}{{ 'active' }}{%endif%}" id="v-pills-{{question.id}}" role="tabpanel" aria-labelledby="v-pills-{{question.id}}-tab">
                 <div class="card p-0 m-0 card-scroll">
                   <div class="card-header d-flex bg-none">
-                    <div class="col-11 px-0">
+                    <div class="col-12 px-0">
                       <h4 id="title-placeholder"></h4>
-                    </div>
-                    <div class="col-1 try-div">
-                      <button class="btn btn-sm btn-success" id="learn-try-button">Try This</button>
                     </div>
                   </div>
                   <div class="card-body" style="overflow-y: scroll;">
@@ -45,7 +56,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
   
 </div>
 

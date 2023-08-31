@@ -31,22 +31,12 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav nav-pills">
-                <li class="show active">
-                  <a class="nav-link" aria-current="page" href="/"> Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/about/"> About </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/learn-python/">Learn Python </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/practice-python/">Practice Python </a>
-                </li>
+                {% block menu_block %}
+                {% endblock %}
               </ul>
             </div>
           </div>

@@ -1,5 +1,19 @@
 {% extends "questions/base.html" %}
 {% load static %}
+{% block menu_block %}
+<li class="show active">
+  <a class="nav-link" aria-current="page" href="/"> Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/about/"> About </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/learn-python/">Learn Python </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/practice-python/">Practice Python </a>
+</li>
+{% endblock %}
 {% block body_block %}
 
 <section class="hero_section ">
@@ -87,5 +101,5 @@
         });}
       });
     });
-  </script>
+</script>
 {% endblock %}

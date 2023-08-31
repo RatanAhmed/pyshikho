@@ -33,6 +33,12 @@ def questions(request):
     questions = Questions.objects.all()
     diction = { 'question_list' : questions}
     return render(request, 'questions/practice.html', context=diction)
+
+def next_pre(request):
+    # questions = Questions.objects.order_by('-id')
+    questions = Questions.objects.all()
+    diction = { 'question_list' : questions}
+    return render(request, 'questions/next-pre.html', context=diction)
    
 def try_it(request, id):
     # Store input numbers
