@@ -7,6 +7,8 @@ from .models import Questions
 
 class QuestionsAdmin(SummernoteModelAdmin):
     summernote_fields = ('description', )
+class LearnAdmin(SummernoteModelAdmin):
+    summernote_fields = ('description', )
 
 admin.site.register(Questions, QuestionsAdmin)
-admin.site.register(Learn)
+admin.site.register(Learn, LearnAdmin)
