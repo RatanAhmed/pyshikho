@@ -90,9 +90,12 @@ def execute(request):
 
 def search(request):
     query = request.GET.get('q')
-    results = Questions.objects.filter(title__icontains=query)[:50]
-    data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
-    return JsonResponse({'results': data})
+    learns = Learn.objects.filter(title__icontains=query)[:50]
+    questions = Questions.objects.filter(title__icontains=query)[:50]
+    # data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in questions]
+    data1 = [{'id': r.id, 'title': r.title} for r in learns]
+    data2 = [{'id': r.id, 'title': r.title} for r in questions]
+    return JsonResponse({'results': data1+data2})
 
 def top_search():
     query = request.GET.get('q')
