@@ -61,8 +61,8 @@ function activate(index) {
 // showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
-  currentItemIndex++;
-  console.log(currentItemIndex);
+  currentItemIndex--;
+  // console.log(currentItemIndex);
   activate(currentItemIndex);
 });
 

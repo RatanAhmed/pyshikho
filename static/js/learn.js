@@ -60,7 +60,8 @@ function activate(index) {
 // showtitle(preItemIndex, currentItemIndex, nextItemIndex);
 $("#sidebar-list").on("click", (e) => {
   currentItemIndex = e.target.getAttribute("data_id");
-  activate(currentItemIndex - 1);
+  currentItemIndex--;
+  activate(currentItemIndex);
 });
 
 // Event listener for previous button
