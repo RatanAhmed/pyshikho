@@ -10,6 +10,7 @@ class QuestionsAdmin(SummernoteModelAdmin):
 
     # list_display = ("title", "solution")
     list_display = ("title", "description")
+    prepopulated_fields = {'description': ('description',)}
     summernote_fields = ('description', )
 class LearnAdmin(SummernoteModelAdmin):
     list_per_page = 25

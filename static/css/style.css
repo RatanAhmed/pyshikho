@@ -684,4 +684,8 @@ pre{
   overflow: auto;
 }
 
+pre{
+  text-wrap: wrap;
+}
+
 /* end footer section*/
