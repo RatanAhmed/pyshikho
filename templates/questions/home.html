@@ -60,7 +60,7 @@
         <ol class="text-white">
             {% if top_searches %}
             {% for question in top_searches %}
-            <li><a class="text-white" href="/try/{{ question.id }}/">{{ question.title }}</a></td>
+            <li><a class="text-white" href="/practice-python/{{ question.id }}/">{{ question.title }}</a></td>
                 {% endfor %}
                 {% endif %}
         </ol>
@@ -86,13 +86,13 @@
             var html = '';
             if (results.length == 0) {
               html +=
-                '<tr><td width="%" class=" bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></td></tr>';
+                '<ul><li class="bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></li></ul>';
             } else {
               html +=
-                '<tr><td width="%" class=" "><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></td></tr>';
+                '<ul><li class=""><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></li></ul>';
               for (var i = 0; i < results.length; i++) {
-                html += '<tr><td width="%"><a class="text-white" target="_blank" href="/try/' + results[i]
-                  .id + '">' + results[i].title + '</a> </tr>';
+                html += '<ul><li><a class="text-white" target="_blank" href="/' + results[i].url + '/' + results[i]
+                  .id + '">' + results[i].title + '</a> </ul>';
                   
               }
             }

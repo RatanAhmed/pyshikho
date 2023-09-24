@@ -25,20 +25,14 @@ def about(request):
 def learn_python(request):
     # questions = Questions.objects.order_by('-id')
     questions = Learn.objects.all()
-    diction = { 'question_list' : questions}
+    diction = { 'question_list' : questions, 'id' : 0}
     return render(request, 'questions/learn.html', context=diction)
    
 def questions(request):
     # questions = Questions.objects.order_by('-id')
     questions = Questions.objects.all()
-    diction = { 'question_list' : questions}
+    diction = { 'question_list' : questions, 'id' : 0}
     return render(request, 'questions/practice.html', context=diction)
-
-def next_pre(request):
-    # questions = Questions.objects.order_by('-id')
-    questions = Questions.objects.all()
-    diction = { 'question_list' : questions}
-    return render(request, 'questions/next-pre.html', context=diction)
    
 def try_it(request, id):
     # Store input numbers
@@ -62,6 +56,17 @@ def practice_by_id(request, id):
     question = Questions.objects.get(id = id)
     data = {'id': question.id, 'title': question.title, 'description': question.description}
     return JsonResponse({'result': data})
+    
+
+def practice_view(request, id):
+    questions = Questions.objects.all()
+    diction = { 'question_list' : questions, 'id' : id}
+    return render(request, 'questions/practice.html', context=diction)
+
+def learn_view(request, id):
+    questions = Learn.objects.all()
+    diction = { 'question_list' : questions, 'id' : id}
+    return render(request, 'questions/learn.html', context=diction)
 
 def result(request, id):
     question = Questions.objects.get(id = id)
@@ -96,11 +101,11 @@ def execute(request):
 
 def search(request):
     query = request.GET.get('q')
-    learns = Learn.objects.filter(title__icontains=query)[:50]
-    questions = Questions.objects.filter(title__icontains=query)[:50]
+    learns = Learn.objects.filter(title__icontains=query)[:100]
+    questions = Questions.objects.filter(title__icontains=query)[:100]
     # data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in questions]
-    data1 = [{'id': r.id, 'title': r.title} for r in learns]
-    data2 = [{'id': r.id, 'title': r.title} for r in questions]
+    data1 = [{'id': r.id, 'title': r.title, 'url': 'learn-python'} for r in learns]
+    data2 = [{'id': r.id, 'title': r.title, 'url': 'practice-python'} for r in questions]
     return JsonResponse({'results': data1+data2})
 
 def top_search():

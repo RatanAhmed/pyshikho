@@ -38,9 +38,9 @@ function activate(index) {
     url: "/learn/" + currentItem.getAttribute("data_id"),
     
     success: function (response) {
-      var question = response.result;
+      var learn = response.result;
       // console.log( response);
-      detailsPlaceholder.innerHTML = question.description;
+      detailsPlaceholder.innerHTML = learn.description;
     }
   });
 
