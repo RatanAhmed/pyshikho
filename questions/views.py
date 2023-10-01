@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from questions.models import Questions, Learn
+from questions.models import Questions, Learn, LearnCodes
 from django.http import JsonResponse
 
 import subprocess
@@ -113,3 +113,16 @@ def top_search():
     results = Questions.objects.filter(title__icontains=query)
     data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in results]
     return JsonResponse({'results': data})
+
+
+def learn_try_it(request, learn_id, identifier):
+    
+    # Store input numbers
+    question = LearnCodes.objects.get(link = identifier)
+    question.solution = question.codes
+    template = loader.get_template('questions/try.html')
+    context = {
+        'result': '', 
+        'question' : question,
+    }
+    return HttpResponse(template.render(context, request))

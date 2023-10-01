@@ -15,6 +15,8 @@ class Questions(models.Model):
 
     def __str__(self):
         return self.title
+    class Meta():
+        verbose_name_plural = 'Questions'
 
 class Learn(models.Model):
     title = models.TextField(null=True)
@@ -28,3 +30,12 @@ class Learn(models.Model):
 
     def __str__(self):
         return self.title
+
+class LearnCodes(models.Model):
+    learn = models.ForeignKey(Learn, on_delete=models.CASCADE)
+    link = models.CharField(max_length=50, verbose_name='Identifier', null=True)
+    codes = models.TextField(null=True)
+    def __str__(self):
+        return self.link
+    class Meta:
+        verbose_name_plural = "Learn Codes"
