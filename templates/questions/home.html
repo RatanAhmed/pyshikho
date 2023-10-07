@@ -50,6 +50,11 @@
                     aria-describedby="basic-addon2" required>
             </div>
         </form>
+        <div >
+          <!-- <ol id="search-results">
+
+          </ol> -->
+        </div>
         <table class="table table-sm text-white table-borderless mt-3" width="100%">
             <tbody id="search-results">
             </tbody>
@@ -86,13 +91,13 @@
             var html = '';
             if (results.length == 0) {
               html +=
-                '<ul><li class="bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></li></ul>';
+                '<div class="bg-white text-center"><a class="text-danger" target="_blank" href="#"> Oops! No Result found !!! Try search with different keywords like: addition, summation or print </a></div>';
             } else {
               html +=
-                '<ul><li class=""><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></li></ul>';
+                '<div class=""><span class="badge bg-success" target="_blank" href="#"> Search results ... </span></div>';
               for (var i = 0; i < results.length; i++) {
-                html += '<ul><li><a class="text-white" target="_blank" href="/' + results[i].url + '/' + results[i]
-                  .id + '">' + results[i].title + '</a> </ul>';
+                html += '<li><a class="text-white" target="_blank" href="/' + results[i].url + '/' + results[i]
+                  .id + '">' + results[i].title + '</a></li>';
                   
               }
             }

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from questions.models import Questions, Learn, LearnCodes
 from django.http import JsonResponse
+from django.db.models import Q
 
 import subprocess
 import os
@@ -100,9 +101,11 @@ def execute(request):
     return "<pre>{}</pre>".format(output)
 
 def search(request):
-    query = request.GET.get('q')
-    learns = Learn.objects.filter(title__icontains=query)[:100]
-    questions = Questions.objects.filter(title__icontains=query)[:100]
+    """Last query"""
+    split = request.GET.get('q')
+    lookup = Q(title__icontains=split)
+    learns = Learn.objects.filter(lookup)[:100]
+    questions = Questions.objects.filter(lookup)[:100]
     # data = [{'id': r.id, 'title': r.title, 'description': r.description} for r in questions]
     data1 = [{'id': r.id, 'title': r.title, 'url': 'learn-python'} for r in learns]
     data2 = [{'id': r.id, 'title': r.title, 'url': 'practice-python'} for r in questions]
