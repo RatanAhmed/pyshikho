@@ -123,6 +123,7 @@ def learn_try_it(request, learn_id, identifier):
     # Store input numbers
     question = LearnCodes.objects.get(link = identifier)
     question.solution = question.codes
+    question.is_input_required = question.is_input_required
     template = loader.get_template('questions/try.html')
     context = {
         'result': '', 
