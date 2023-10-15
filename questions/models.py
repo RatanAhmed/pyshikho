@@ -9,7 +9,7 @@ class Questions(models.Model):
     description = models.TextField(null=True)
     solution = models.TextField(null=True)
     search_count = models.IntegerField(null=True, default=0)
-    is_input_required = models.IntegerField(null=False, default=0)
+    is_input_required = models.IntegerField(null=False, default=0,  help_text="0=No, 1=Yes")
     # learn_or_practice = models.IntegerField(null=False,default=0, help_text="0=Learn, 1=practice")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -34,7 +34,7 @@ class LearnCodes(models.Model):
     learn = models.ForeignKey(Learn, on_delete=models.CASCADE)
     link = models.CharField(max_length=50, verbose_name='Identifier', null=True, unique=True)
     codes = models.TextField(null=True)
-    is_input_required = models.IntegerField(null=False, default=0)
+    is_input_required = models.IntegerField(null=False, default=0, help_text="0=No, 1=Yes")
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
